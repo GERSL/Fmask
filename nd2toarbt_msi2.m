@@ -156,7 +156,8 @@ function trgt=CreateTargetGRIDobj(resolu,ul,ijdim_ref,zc_num,zc_ns,geokey)
     ul_tmp=ul - [resolu(1)/2 0-resolu(2)/2]; %back to limits.
 
     % location of the 'center' of the first (1,1) pixel in the image.
-    trgt.refmat=makerefmat(ul(1),ul(2),resolu(1),0-resolu(2));
+    % trgt.refmat=makerefmat(ul(1),ul(2),resolu(1),0-resolu(2));
+    trgt.refmat = maprefcells([ul(2) ul(2) + resolu(2)], [ul(1) ul(1) + resolu(1)], resolu);
     clear ul;
     trgt.size=ijdim_ref;
 
