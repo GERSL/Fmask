@@ -19,6 +19,10 @@ function [sensor,num_Lst,InputFile,main_meta] = LoadSensorType(path_data)
                 txtstart = strfind(path_data,'S2B') ;    % S2A or S2B  by Shi 10/18/2017
                 num_Lst='2B';
             end
+            if isempty(txtstart)
+                txtstart = strfind(path_data,'S2C') ;    % or S2C by Shi 1/16/2025
+                num_Lst='2C';
+            end
             txtend   = strfind(path_data,'.SAFE')-1 ;   
             InputFile.DataStrip = path_data(txtstart:txtend) ;
 
@@ -67,7 +71,7 @@ function [sensor,num_Lst,InputFile,main_meta] = LoadSensorType(path_data)
             end
         end
     end
-    if strcmp(num_Lst,'2A')||strcmp(num_Lst,'2B')
+    if strcmp(num_Lst,'2A')||strcmp(num_Lst,'2B')||strcmp(num_Lst,'2C')
         sensor='S_MSI';
     end
 end
