@@ -57,7 +57,7 @@ function clr_pct = autoFmask(varargin)
 %
 %        
 % Author:  Shi Qiu (shi.qiu@uconn.edu) and Zhe Zhu (zhe@uconn.edu)
-% Last Date: Feb. 25, 2022
+% Last Date: Jan. 16, 2025
 % Copyright @ GERS Lab, UCONN.
 
     warning('off','all'); % do not show warning information
