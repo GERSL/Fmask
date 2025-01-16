@@ -1,20 +1,20 @@
-function Fmask_4_6(input1, input2, input3, input4, input5)
-%% Standalone of Fmask 4.6 version
+function Fmask_4_7(input1, input2, input3, input4, input5)
+%% Standalone of Fmask 4.7 version
 % Input formats
 %
 % 1) Set default program
-%     Fmask_4_6()
+%     Fmask_4_7()
 %
 % 2) Set buffers of cloud, shadow, and snow/ice
-%    Fmask_4_6(3, 3, 1)
+%    Fmask_4_7(3, 3, 1)
 %
-% 3) Set buffers of cloud, shadow, and snow/ice, and thershold of cloud probability
-%    Fmask_4_6(3, 3, 3, 22.5)
+% 3) Set buffers of cloud, shadow, and snow/ice, and threshold of cloud probability
+%    Fmask_4_7(3, 3, 3, 22.5)
 %
 %
 % Below cases are to setup the directory of the auxiliary data (the folder
 % <AuxiData>) for the implement which fails to locate the directory by the
-% default settings. To examine this, please process a image using the
+% default settings. To examine this, please process an image using the
 % default program (like case 1), and if a warning message 'Fail to locate
 % the directory of auxiliary data'  presents, this means the default
 % settings do not work, and then you need to custumize the directory of
@@ -24,19 +24,19 @@ function Fmask_4_6(input1, input2, input3, input4, input5)
 % This problem usually occurs in Linux system.
 % (a warning message 'Fail to locate the directory of auxiliary data' will presents).
 %
-% Note: Start up from the Matlab code will not be afffected, and please
+% Note: Start up from the Matlab code will not be affected, and please
 % ignore the below cases
 %
-% Please consider them only when a warning message 'Fail to locate the auxiliary data' presents at default model
+% Please consider them only when a warning message 'Fail to locate the auxiliary data' present at default model
 %
 % 4) Set the directory of the auxiliary data 
-%     Fmask_4_6('C:\Users\xxx\xxx\Fmask_4_4\AuxiData')
+%     Fmask_4_7('C:\Users\xxx\xxx\Fmask_4_4\AuxiData')
 %
 % 5) Set buffers of cloud, shadow, and snow/ice, and the auxiliary data
-%    Fmask_4_6(3, 3, 0, 'C:\Users\xxx\xxx\Fmask_4_4\AuxiData')
+%    Fmask_4_7(3, 3, 0, 'C:\Users\xxx\xxx\Fmask_4_4\AuxiData')
 %
-% 6) Set buffers of cloud, shadow, and snow/ice, thershold of cloud probability, and the auxiliary data
-%    Fmask_4_6(3, 3, 0, 22.5, 'C:\Users\xxx\xxx\Fmask_4_4\AuxiData')
+% 6) Set buffers of cloud, shadow, and snow/ice, threshold of cloud probability, and the auxiliary data
+%    Fmask_4_7(3, 3, 0, 22.5, 'C:\Users\xxx\xxx\Fmask_4_4\AuxiData')
 %
 
     %% Case 1)
