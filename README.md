@@ -5,7 +5,7 @@ If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (s
 
 **IMPORTANT:**
 
-Fmask 4.6 improved the cloud and cloud shadow detection by integrating a **global auxiliary data** including DEM and water layer, and this GitHub page **ONLY** provides the Matlab code due to the storage limitation of the repository. **The full Matlab code package with GLOBAL AUXILIARY DATA** is available at this [One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EeLdP9EwH8hBsa89e5n8EOEB4B9STSbdLsaZZ3Lo5FviyA?e=BNu1S0), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-9 and Sentinel-2 images into a folder. **The folder \<AuxiData>** includes the auxiliary dataset. Note that Mapping Toolbox in Matlab is required to use the source code. The **standalone** can be downloaded for Linux ([One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/ETvkMoQox6pHhCl0eO9JfzcBe7coj13KiXtwhBrtzmnR9w?e=XzDIcb)) and Windows ([One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EUcId_499NdOoQlo5Og9fCABMLS9tvSTIhVue5WyN0zlTw?e=eejLG9)). The tutorial for using the standalone can be found at [this link](https://uconn-my.sharepoint.com/:b:/g/personal/shi_qiu_uconn_edu/EaS2N17DqqBEndTlG87XuM0Bc_VolunMk_sT9JTe33GNJg?e=lEutoi). Other older versions of Fmask are available upon request.
+Fmask 4.6 improved the cloud and cloud shadow detection by integrating a **global auxiliary data** including DEM and water layer, and this GitHub page **ONLY** provides the Matlab code due to the storage limitation of the repository. **The full Matlab code package with GLOBAL AUXILIARY DATA** is available at this [One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EeLdP9EwH8hBsa89e5n8EOEB4B9STSbdLsaZZ3Lo5FviyA?e=BNu1S0), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-9 and Sentinel-2 images into a folder. **The folder \<AuxiData>** includes the auxiliary dataset. Note that Mapping Toolbox in Matlab is required to use the source code. The **standalone** can be downloaded for Linux ([One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EUP27YENtwRMhC5KYpduWcsB3Ly2p4UKeNAqyKXDlNMx1g?e=hOuJpb)) and Windows ([One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EeDNtHCQck5GrLE21LaJDeMBDo_-txjI-6KeCWHVpggs2g?e=74wqVJ)). [This link](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/Ee3kogNUSfJHgADA6-PcvmEBj4iefvtO5NH4JECDHqw37A?e=SNJceR) provides the standalone with UI on Windows. The tutorial for using the standalone can be found at [this link](https://uconn-my.sharepoint.com/:b:/g/personal/shi_qiu_uconn_edu/EaS2N17DqqBEndTlG87XuM0Bc_VolunMk_sT9JTe33GNJg?e=lEutoi). Other older versions of Fmask are available upon request.
 
 **USE of GLOBAL AUXILIARY DATA: (Matlab code or Windows standalone users can ignore this)**
 
@@ -24,48 +24,51 @@ The majority of the current Collection 1 Landsats 4-9 QA Band provided by USGS a
 
 When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud shadow, but no dilation for cloud, snow, and water.
 
+# 4.7 Version
+1) Updated for Sentintel-2C. (1/16/2025)
+   
 # 4.6 Version
-1) Updated for Landsat 9. (2/27/2022)
+2) Updated for Landsat 9. (2/27/2022)
 
 ----- 4.5 Version below ----
 
-2) Implemented a static seed random generator when detecting cloud shadow, which can ensure the reproducibility of the outputs. (Thanks [NASA HLS](https://hls.gsfc.nasa.gov) team for this suggestion).
+3) Implemented a static seed random generator when detecting cloud shadow, which can ensure the reproducibility of the outputs. (Thanks [NASA HLS](https://hls.gsfc.nasa.gov) team for this suggestion).
 
 ----- 4.4 Version below ----
 
-3) To fix the errors in computing the ID of detector footprints during the view angle generation of the new Sentinel-2 data [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline) (This may result in wrong locations of cloud shadow), and to provide the notifications regarding the global auxiliary data and the input interface of setting the dataset path (particularly for Linux standalone). (Shi Qiu 1/26/2022)
+4) To fix the errors in computing the ID of detector footprints during the view angle generation of the new Sentinel-2 data [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline) (This may result in wrong locations of cloud shadow), and to provide the notifications regarding the global auxiliary data and the input interface of setting the dataset path (particularly for Linux standalone). (Shi Qiu 1/26/2022)
 
-4) To process the new Sentinel-2 data with [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline), to fix bugs in producing the view angles (detectors sorted) and converting the datetime of Sentinel-2 data (irregular format sometimes), and to update the functions of processing Landsat Collection 2 data. (Shi Qiu 12/28/2021)
+5) To process the new Sentinel-2 data with [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline), to fix bugs in producing the view angles (detectors sorted) and converting the datetime of Sentinel-2 data (irregular format sometimes), and to update the functions of processing Landsat Collection 2 data. (Shi Qiu 12/28/2021)
 
 ----- 4.3 version below ----
 
-5) Fixed the bug when GRIDobj reads geotiff with several tiffinfos (see GRIDobj.m). (Shi Qiu 10/15/2020)
+6) Fixed the bug when GRIDobj reads geotiff with several tiffinfos (see GRIDobj.m). (Shi Qiu 10/15/2020)
 
 ----- 4.2 version below ----
 
-6) Update Fmask tool for processing Landsat Collection 2 data; and allow the cloud probability threshold in a larger range such as [-100, 100] in the GUI version. (Shi Qiu 4/8/2020)
+7) Update Fmask tool for processing Landsat Collection 2 data; and allow the cloud probability threshold in a larger range such as [-100, 100] in the GUI version. (Shi Qiu 4/8/2020)
 
 ----- 4.1 version below ----
 
-7) The cloud shadow mask over water would not be provided at default settings since this will be less meaningful to use and very time-consuming to process. At the same time, fixed the bug that the auxiliary data may not be used for some Sentinel-2 images, of which the extent in the metadata is defined in [0 360] rather than [-180 180]. (Shi Qiu 3/17/2020)
+8) The cloud shadow mask over water would not be provided at default settings since this will be less meaningful to use and very time-consuming to process. At the same time, fixed the bug that the auxiliary data may not be used for some Sentinel-2 images, of which the extent in the metadata is defined in [0 360] rather than [-180 180]. (Shi Qiu 3/17/2020)
 
 ----- 4.0 version below ----
 
-8) Fixed the bug that the cloud shadows in Sentinel-2 imagery would be projected along the wrong direction when solar azimuth angle > 180 degrees. (Shi Qiu 01/19/2019)
+9) Fixed the bug that the cloud shadows in Sentinel-2 imagery would be projected along the wrong direction when solar azimuth angle > 180 degrees. (Shi Qiu 01/19/2019)
 
-9) Integrated Cloud Displacement Index (CDI) into this Fmask 4.0 for better separating clouds from bright surfaces especial for Sentinel-2. The CDI was specially designed to separate clouds from bright surfaces based on the view angle parallax of the three near-infrared bands (band 7, 8, and 8a) ([Frantz et al., 2018](https://doi.org/10.1016/j.rse.2018.04.046)).  (Shi Qiu and Zhe Zhu 06/03/2018)
+10) Integrated Cloud Displacement Index (CDI) into this Fmask 4.0 for better separating clouds from bright surfaces especial for Sentinel-2. The CDI was specially designed to separate clouds from bright surfaces based on the view angle parallax of the three near-infrared bands (band 7, 8, and 8a) ([Frantz et al., 2018](https://doi.org/10.1016/j.rse.2018.04.046)).  (Shi Qiu and Zhe Zhu 06/03/2018)
 
-10) Revised the method to identify the potential false positive cloud pixels.  (Shi Qiu and Zhe Zhu 05/23/2018)
+11) Revised the method to identify the potential false positive cloud pixels.  (Shi Qiu and Zhe Zhu 05/23/2018)
 
-11) Restricted the height of the clouds located in the scene boundary into the predicted cloud height derived from its neighboring clouds.  (Shi Qiu 04/05/2018)
+12) Restricted the height of the clouds located in the scene boundary into the predicted cloud height derived from its neighboring clouds.  (Shi Qiu 04/05/2018)
 
-12) Removed the overlap between the predicted cloud shadow and the potential cloud shadow layer for cloud shadow detection. (Shi Qiu and Zhe Zhu 03/29/2018)
+13) Removed the overlap between the predicted cloud shadow and the potential cloud shadow layer for cloud shadow detection. (Shi Qiu and Zhe Zhu 03/29/2018)
 
-13) Fixed the bug that the reading blue band using GRIDobj may lead to Nan value for Landsat images. (Shi Qiu 03/26/2018)
+14) Fixed the bug that the reading blue band using GRIDobj may lead to Nan value for Landsat images. (Shi Qiu 03/26/2018)
 
-14) Improved the computational efficiency especially for cloud shadow matching procedure.  (Zhe Zhu and Shi Qiu 03/24/2018)
+15) Improved the computational efficiency especially for cloud shadow matching procedure.  (Zhe Zhu and Shi Qiu 03/24/2018)
 
-15) Released Fmask 4.0 beta version. (Shi Qiu, Zhe Zhu, and Binbin He 03/22/2018)
+16) Released Fmask 4.0 beta version. (Shi Qiu, Zhe Zhu, and Binbin He 03/22/2018)
 
 
 Please cite the following papers:
