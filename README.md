@@ -4,6 +4,10 @@ The software called Fmask (Function of mask) is used for automated **clouds**, *
 If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (shi.qiu@uconn.edu) at the Department of Natural Resources and the Environment, University of Connecticut.
 
 **IMPORTANT:**
+**Fmask 5, a novel physics-informed machine learning model programmed in Python, is expected to be released soon following peer review.**
+
+
+**IMPORTANT:**
 
 Fmask 4.7 improved the cloud and cloud shadow detection by integrating a **global auxiliary data** including DEM and water layer, and this GitHub page **ONLY** provides the Matlab code due to the storage limitation of the repository. **The full Matlab code package with GLOBAL AUXILIARY DATA** is available at this [One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EeDNtHCQck5GrLE21LaJDeMBDo_-txjI-6KeCWHVpggs2g?e=8XWLIG), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-9 and Sentinel-2 images into a folder. **The folder \<AuxiData>** includes the auxiliary dataset. Please note that the Mapping Toolbox in MATLAB is required to use the source code, and **R2022a** is recommended. The **standalone** can be downloaded for Linux ([One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EcgHiYcLbNFGiyLr5LI8H08BjXPf5eQoNk7txTZhCo1XkA?e=2izfo7)) and Windows ([One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EaoUv212lUBBi518UNx5-joBwpbAO4je-gfVhGGDQ6XX-A?e=Kd3rYO)). [This link](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EQKo4_L5QMNIouxAcLacaAQB2HXOszc76cLMnTzOYzuSjA?e=vldoEa) provides the standalone with UI on Windows. The tutorial for using the standalone can be found at [this link](https://uconn-my.sharepoint.com/:b:/g/personal/shi_qiu_uconn_edu/EaS2N17DqqBEndTlG87XuM0Bc_VolunMk_sT9JTe33GNJg?e=lEutoi). Other older versions of Fmask are available upon request.
 
