@@ -4,7 +4,7 @@ The software called Fmask (Function of mask) is used for automated **clouds**, *
 If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (shi.qiu@uconn.edu) at the Department of Natural Resources and the Environment, University of Connecticut.
 
 **IMPORTANT:**
-**Fmask 5, a novel physics-informed machine learning model programmed in Python, is expected to be released soon following peer review.**
+**Fmask 5, a novel physics-informed machine learning model programmed in Python, is expected to be officially released soon following peer review. See the temporal repository from [this link](https://github.com/qsly09/fmask5).**
 
 
 **IMPORTANT:**
