@@ -179,6 +179,9 @@ Each pixel is classified with one of the following values:
 ### Computing Efficiency
 TBD
 
+### Global Validation Dataset
+The global validation samples are available at [this link](https://uconn-my.sharepoint.com/:x:/g/personal/shi_qiu_uconn_edu/ET-tvYaDiApNowsSxNHI2ysBIdI-3XgqFKRslHxhtouo9g?e=yxWdLO).
+
 ### Version History
 #### 5.0.1
 - As described in Qiu et al., 2025
