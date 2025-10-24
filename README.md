@@ -41,12 +41,11 @@ Figure 2: Flowchart of physics-informed machine learning (PIML) for cloud detect
 
 # How to Use
 ## Installation
-* Customize:
-# Create python environment with version 3.9 from (Mini) Conda
+### Create python environment with version 3.9 from (Mini) Conda
 - conda create -n fmask python=3.10
-# Activate the python environment
+### Activate the python environment
 - conda activate fmask
-# Configure dependent packages (The packages listed below were used for testing and may not all be required)
+### Configure dependent packages (The packages listed below were used for testing and may not all be required)
 - conda install rasterio gdal -y
 - pip install -U segmentation-models-pytorch
 - pip install plotly
