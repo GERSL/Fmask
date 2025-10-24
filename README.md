@@ -84,7 +84,7 @@ If the tool runs successfully, you will see progress information as shown below:
     >>> loading coastal in toa  
     >>> loading blue in toa 
 <details>
-<summary>Click to see the full information of the progress</summary>
+<summary>Click to see the full information on the progress</summary>
 
     ************************************************
     Starting Fmask 5.0.0 with dilating 3 for cloud, 5 for shadow, and 0 for snow  
@@ -162,10 +162,10 @@ TBD
 ### Version History
 #### 5.0.0
 - Applied Physics-Informed Machine Learning (PIML) framework for cloud detection, as described in Qiu et al., 2025.
-- Adapted cloud shadow detection from MATLAB Fmask 4.6 with minor improvements described on [this page](https://github.com/qsly09/fmask5/wiki/Cloud-Shadow-Detection).
+- Adapted cloud shadow detection from MATLAB Fmask 4.6 with minor improvements described on [this page](https://github.com/GERSL/Fmask/wiki/Cloud-Shadow-Detection).
 
 #### 1.6 - 4.7
-Earlier versions of the Fmask tools offered only a physical-rule-based cloud detection module, programmed in MATLAB. See [this page](https://github.com/GERSL/Fmask) for more details.
+Earlier versions of the Fmask tools offered only a physical-rule-based cloud detection module, programmed in MATLAB. See [this page](https://github.com/GERSL/Fmask4) for more details.
 
 ## Contributing
 We welcome and encourage contributions to Fmask! There are two primary ways to contribute:
