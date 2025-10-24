@@ -61,6 +61,7 @@ Figure 2: Flowchart of physics-informed machine learning (PIML) for cloud detect
 - pip install pyproj 
 - pip install utm
 - pip install lightgbm
+- pip install click
 
 ## Running Fmask from the `main` Folder
 To apply Fmask-UPL on a single Landsat 8-9 image (default cloud dilation: 3 pixels):
