@@ -200,7 +200,7 @@ We welcome and encourage contributions to Fmask! There are two primary ways to c
 If you happen to have any issues or suggestions for improving Fmask, we encourage you to open an issue or submit a pull request.
 
 ### Share Problematic Images
-We are actively collecting examples of images that have not been processed accurately by the current version of Fmask. If you come across such images, please share the image ID with us on [this page](https://github.com/qsly09/fmask5/issues/1). The collected images will be used to refine the inner machine learning models, improving their accuracy and reliability in future versions.
+We are actively collecting examples of images that have not been processed accurately by the current version of Fmask. If you come across such images, please share the image ID with us on [this page](https://github.com/GERSL/Fmask/issues/1). The collected images will be used to refine the inner machine learning models, improving their accuracy and reliability in future versions.
 
 ## Known Issues
 - False positive errors in cloud detection over bright surfaces. Although the most recent version of Fmask has addressed most of these issues, challenges remain in highly reflective areas, such as high-mountain snow and ice.
