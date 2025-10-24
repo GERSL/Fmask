@@ -181,7 +181,7 @@ Each pixel is classified with one of the following values:
 TBD
 
 ### Global Validation Dataset
-The global validation samples are available at [this link](https://uconn-my.sharepoint.com/:x:/g/personal/shi_qiu_uconn_edu/ET-tvYaDiApNowsSxNHI2ysBIdI-3XgqFKRslHxhtouo9g?e=yxWdLO).
+The global validation samples are available at [this link](https://uconn-my.sharepoint.com/:x:/g/personal/shi_qiu_uconn_edu/EWuMeX9Eo7RBk54giVBXjL8BDjDHW0bRzACAvdHv74FyHw?e=93it8d).
 
 ### Version History
 #### 5.0.1
