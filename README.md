@@ -41,7 +41,27 @@ Figure 2: Flowchart of physics-informed machine learning (PIML) for cloud detect
 
 # How to Use
 ## Installation
-TBD
+* Customize:
+# Create python environment with version 3.9 from (Mini) Conda
+- conda create -n fmask python=3.10
+# Activate the python environment
+- conda activate fmask
+# Configure dependent packages (The packages listed below were used for testing and may not all be required)
+- conda install rasterio gdal -y
+- pip install -U segmentation-models-pytorch
+- pip install plotly
+- pip install --upgrade nbformat  # for the plotly
+- pip install patchify
+- conda install lxml -y
+- pip install pandas
+- pip install geopandas
+- pip install -U scikit-learn
+- conda install scipy -y
+- conda install scikit-image -y
+- conda install matplotlib -y
+- pip install pyproj 
+- pip install utm
+- pip install lightgbm
 
 ## Running Fmask from the `main` Folder
 To apply Fmask-UPL on a single Landsat 8-9 image (default cloud dilation: 3 pixels):
