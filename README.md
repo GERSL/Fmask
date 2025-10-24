@@ -160,8 +160,10 @@ Each pixel is classified with one of the following values:
 TBD
 
 ### Version History
+#### 5.0.1
+- As described in Qiu et al., 2025
 #### 5.0.0
-- Applied Physics-Informed Machine Learning (PIML) framework for cloud detection, as described in Qiu et al., 2025.
+- Initially released with 512×512 image chips and the full set of predictors in machine learning.
 - Adapted cloud shadow detection from MATLAB Fmask 4.6 with minor improvements described on [this page](https://github.com/GERSL/Fmask/wiki/Cloud-Shadow-Detection).
 
 #### 1.6 - 4.7
@@ -183,7 +185,7 @@ We are actively collecting examples of images that have not been processed accur
 *Note*: Our team is collecting images with cloud detection issues and will continuously update the machine learning model to make improvements.
 
 ## References
-Qiu, S., Zhu, Z., Yang, X., Ju, J., Zhou, Q., Neigh, C., Physics-Informed Machine Learning for Cloud Detection in Landsat and Sentinel-2 Imagery, Under review
+Qiu, S., Zhu, Z., Yang, X., Ju, J., Zhou, Q., Neigh, C., Physics-Informed Machine Learning for Cloud Detection, Under review
 
 Qiu, S., et al., Fmask 4.0: Improved cloud and cloud shadow detection in Landsats 4-8 and Sentinel-2 imagery, Remote Sensing of Environment, (2019), doi.org/10.1016/j.rse.2019.05.024 (paper for 4.0).
 
