@@ -36,8 +36,8 @@ Figure 2: Flowchart of physics-informed machine learning (PIML) for cloud detect
 
 | Version | Download |
 |---------|----------|
-| 5.0.1| [Link to Fmask 5.0.1 package](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EeW6nd-YLFdLtP33BCM9A5YBahNJdBU4M7wXoI07mjJSzA?e=u92kry) |
-| 5.0.0   | [Link to Fmask 5.0.0 package](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/EeJCqxEW_v9Mtl6gUBei_ZIB0_nvecSBz6l1Bp2K4JNlaQ?e=cxiBxY) |
+| 5.0.1| [Link to Fmask 5.0.1 package](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/IQBPF0E7y9RzS5F9x4HULUYPAcDl5tTd0wkIVXn7X-jHoBU?e=2wUtzf)|
+| 5.0.0| [Link to Fmask 5.0.0 package](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/IQC-46pkcOAjRYRsUWm2UeCzARR6eIQ1UsMG7r-UEfS_ucQ?e=OrIyad)|
 
 
 # How to Use
