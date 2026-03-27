@@ -67,7 +67,7 @@ Figure 2: Flowchart of physics-informed machine learning (PIML) for cloud detect
 ## Running Fmask from the `main` Folder
 To apply Fmask-UPL on a single Landsat 8-9 image (recommended cloud dilation: 1 pixel):
 ```bash
-python fmask.py --imagepath /path/to/image_directory_landsat8-9 --model UPL
+python fmask.py --imagepath /path/to/image_directory_landsat8-9 --model UPL --dcloud=1
 ```
 
 To apply Fmask-UPL on a single Sentinel-2 image (recommended cloud dilation: 0 pixels):
@@ -77,7 +77,7 @@ python fmask.py --imagepath /path/to/image_directory_Sentinel-2.SAFE --model UPL
 
 To apply Fmask-LPL on a single Landsat 4-7 image (recommended cloud dilation: 1 pixel):
 ```bash
-python fmask.py --imagepath /path/to/image_directory_landsat4-7 --model LPL
+python fmask.py --imagepath /path/to/image_directory_landsat4-7 --model LPL --dcloud=1
 ```
 
 ## 🛠️ Command-Line Options
