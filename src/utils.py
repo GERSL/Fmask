@@ -1172,9 +1172,14 @@ def normalize_image(image, **kwargs):
     else:
         image_valid = image[np.where(obsmask)].astype("float")
 
-    [min_val, max_val] = np.percentile(
-        image_valid, percentile_range, interpolation="linear"
-    )
+    if np.__version__ >= '1.22.0':
+        [min_val, max_val] = np.percentile(
+            image_valid, percentile_range, method='linear'
+        )
+    else:
+        [min_val, max_val] = np.percentile(
+            image_valid, percentile_range, interpolation='linear'
+        )
     # normal_minmax_range = [min_val, max_val]
     # rescale
     image_scaled = ((image - min_val) / (max_val - min_val + C.EPS)) * (
