@@ -1285,6 +1285,7 @@ class Fmask(object):
                     "temperature_hot": self.physical.options[1],
                     "cirrus": self.physical.options[2],
                     "threshold": self.physical.threshold,
+                    "seedoverlap": self.physical.seedoverlap, # overlap between ML-cloud and noncloud seeds in physical rule space; just for recording
                     "running_time": running_time,
                 }
             ],
