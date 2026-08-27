@@ -184,6 +184,9 @@ TBD
 The global validation samples are available at [this link](https://uconn-my.sharepoint.com/:x:/g/personal/shi_qiu_uconn_edu/IQCOGXrB23p-SLBu0exv5WJBAS71rzu1JA8IsvZxC_tM7Gg?e=fVkXH6).
 
 ### Version History
+#### 5.0.2 (TBD)
+- Fixed a shadow matching bug by adjusting the solar and viewing azimuth angles relative to image north, particularly for Landsat imagery in the Antarctic Polar Stereographic projection.
+
 #### 5.0.1
 - As described in Qiu et al., 2025
 #### 5.0.0
