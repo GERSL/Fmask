@@ -184,11 +184,12 @@ TBD
 The global validation samples are available at [this link](https://uconn-my.sharepoint.com/:x:/g/personal/shi_qiu_uconn_edu/IQCOGXrB23p-SLBu0exv5WJBAS71rzu1JA8IsvZxC_tM7Gg?e=fVkXH6).
 
 ### Version History
-#### 5.0.2 (TBD)
+#### 5.0.2 (not yet released; available on the develop branch)
 - Fixed a shadow matching bug by adjusting the solar and viewing azimuth angles relative to image north, particularly for Landsat imagery in the Antarctic Polar Stereographic projection.
 
 #### 5.0.1
 - As described in Qiu et al., 2025
+
 #### 5.0.0
 - Initially released with 512×512 image chips and the full set of predictors in machine learning.
 - Adapted cloud shadow detection from MATLAB Fmask 4.6 with minor improvements described on [this page](https://github.com/GERSL/Fmask/wiki/Cloud-Shadow-Detection).
