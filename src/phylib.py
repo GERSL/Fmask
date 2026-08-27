@@ -1,4 +1,14 @@
 "Physical rules to detect clouds"
+"""
+Aug. 26, 2026:
+    Adjusted the azimuth angles to the image north for the shadow matching.
+    This change primarily addresses incorrect shadow matching in Landsat images
+    using the Antarctic polar stereographic projection (EPSG:3031), where
+    geographic north is not necessarily aligned with image north. 
+
+    This will not affect the shadow matching in the Landsat images (of which central latitude greater than or equal to -63.0 degrees) and all Sentinel-2 images, as they are typically in UTM projection, where image north is aligned with geographic north, and only caused 1-3 degrees of azimuth angle difference
+    Reference: https://www.usgs.gov/landsat-missions/landsat-level-1-processing-details (accessed on Aug. 26, 2026)
+"""
 
 import numpy as np
 import copy
@@ -9,6 +19,7 @@ import utils
 from scipy.ndimage.filters import uniform_filter
 from sklearn.linear_model import LinearRegression
 from skimage.measure import label, regionprops
+from pyproj import Transformer
 
 
 # np.seterr(invalid='ignore') # ignore the invalid errors
@@ -1938,6 +1949,7 @@ class Physical:
     options_var = [True, False]
     options_temp = [True, False]
     options_cirrus = [True, False]
+    seedoverlap = 1.1 # > 1 means this does not be triggered
 
     # we do not use this option right now, since we do not want to change the physical rules
     # erosion of water mask, which is used to remove the small water pixels, such as narrow river and ponds. For those, we do not need to get based on the gswo dataset, just use the spectral test
@@ -2354,12 +2366,58 @@ class Physical:
         ):  # only for the seed pixels which are used to find the optimal threshold
             self.options = options_record  # update the options determined
             self.threshold = threshold_record  # update the threshold determined
+            self.seedoverlap = ol_record  # update the overlap determined
             if C.MSG_FULL:
                 print(
                     f">>> optimal cloud probability ({str(options_record[0])[0]}{str(options_record[1])[0]}{str(options_record[2])[0]}) | optimal threshold: {threshold_record:.3f}"
                 )
 
         return prob_record, options_record, threshold_record
+
+    def get_true_north_rotation_angle(self):
+        """
+            Calculate the rotation angle from projected grid north to geographic true north.
+            Returns the angle in degrees, where positive values indicate clockwise rotation from projected grid north to geographic true north.
+        """
+        image_crs = self.image.profile['crs']
+        lon_center = self.image.lon_center
+        lat_center = self.image.lat_center
+        transformer = Transformer.from_crs(
+            "EPSG:4326",
+            image_crs,
+            always_xy=True
+        )
+
+        # Project the image center
+        x0, y0 = transformer.transform(
+            lon_center,
+            lat_center
+        )
+
+        # Project a nearby point toward geographic true north
+        latitude_step = 1e-5
+        xn, yn = transformer.transform(
+            lon_center,
+            lat_center + latitude_step
+        )
+
+        # True-north vector in projected coordinates
+        dx = xn - x0
+        dy = yn - y0
+
+        if np.hypot(dx, dy) == 0:
+            image_rotation2north_angle = 0.0
+            return image_rotation2north_angle
+        else:
+            # Clockwise angle from projected grid north (+y)
+            # to geographic true north
+            rotation_deg = np.degrees(np.arctan2(dx, dy))
+            # Normalize to [-180, 180]
+            image_rotation2north_angle = (
+                rotation_deg + 180.0
+            ) % 360.0 - 180.0
+
+            return image_rotation2north_angle
 
     def match_cloud2shadow(
         self,
@@ -2389,6 +2447,13 @@ class Physical:
         dem_relative[dem_relative < 0] = 0 # minimum elevation is 0 after do the relative elevation
         sensor_zenith = self.image.read_angle("SENSOR_ZENITH", unit="degree")
         sensor_azimuth = self.image.read_angle("SENSOR_AZIMUTH", unit="degree")
+
+        image_north_angle_adj = self.get_true_north_rotation_angle()
+        sensor_azimuth = sensor_azimuth + image_north_angle_adj
+        self.image.sun_azimuth = self.image.sun_azimuth + image_north_angle_adj # will be not used after shadow matching; and so it is OK to adjust the sun azimuth angle directly
+        if C.MSG_FULL:
+            print(f">>> azimuth angles adjusted to image north: {image_north_angle_adj:.3f} degrees")
+
         # project the dem to the reference plane, at the first step
         plane2image_row_odd, plane2image_col_odd, plane2image_row_even, plane2image_col_even, plane_offset = project_dem2plane(
             dem_relative,
@@ -2418,7 +2483,7 @@ class Physical:
             cloud_objects,
             pshadow,
             water,
-            self.image.filled.copy(), # copy it, since we will modify it with adding water layer to punish the shadow over water
+            self.image.filled.copy(),
             sensor_zenith,
             sensor_azimuth,
             self.image.sun_elevation,
