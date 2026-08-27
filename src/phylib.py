@@ -1949,7 +1949,6 @@ class Physical:
     options_var = [True, False]
     options_temp = [True, False]
     options_cirrus = [True, False]
-    seedoverlap = 1.1 # > 1 means this does not be triggered
 
     # we do not use this option right now, since we do not want to change the physical rules
     # erosion of water mask, which is used to remove the small water pixels, such as narrow river and ponds. For those, we do not need to get based on the gswo dataset, just use the spectral test
@@ -2366,7 +2365,6 @@ class Physical:
         ):  # only for the seed pixels which are used to find the optimal threshold
             self.options = options_record  # update the options determined
             self.threshold = threshold_record  # update the threshold determined
-            self.seedoverlap = ol_record  # update the overlap determined
             if C.MSG_FULL:
                 print(
                     f">>> optimal cloud probability ({str(options_record[0])[0]}{str(options_record[1])[0]}{str(options_record[2])[0]}) | optimal threshold: {threshold_record:.3f}"
