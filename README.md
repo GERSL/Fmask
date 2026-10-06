@@ -213,7 +213,7 @@ We are actively collecting examples of images that have not been processed accur
 *Note*: Our team is collecting images with cloud detection issues and will continuously update the machine learning model to make improvements.
 
 ## References
-Qiu, S., Zhu, Z., Yang, X., Ju, J., Zhou, Q., Neigh, C., Physics-Informed Machine Learning for Cloud Detection, Remote Sensing of Environment, In revision.
+Qiu, S., Zhu, Z., Yang, X., Ju, J., Zhou, Q., Neigh, C., Physics-Informed Machine Learning for Cloud Detection, Remote Sensing of Environment, (2026) doi.org/10.1016/j.rse.2026.115672 (paper for 5.0.1).
 
 Qiu, S., et al., Fmask 4.0: Improved cloud and cloud shadow detection in Landsats 4-8 and Sentinel-2 imagery, Remote Sensing of Environment, (2019), doi.org/10.1016/j.rse.2019.05.024 (paper for 4.0).
 
