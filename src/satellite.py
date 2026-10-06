@@ -1,14 +1,15 @@
 """
 Author: Shi Qiu
 Email: shi.qiu@uconn.edu
-Date: 2024-05-24
-Version: 1.0.0
+Date: 2026-10-05
+Version: 1.0.1
 License: MIT
 
 Description:
 This script defines the Satellite class for reading satellite data from Landsat and Sentinel-2 images.
 
 Changelog:
+- 1.0.1 (2026-10-05): Fix the longitude-center calculation for images crossing the 180° meridian.
 - 1.0.0 (2024-05-24): Initial release.
 """
 
@@ -457,8 +458,21 @@ class Landsat(Satellite):
         # add lat_center and lon_center
         self.lat_center = (float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_LL_LAT_PRODUCT"]) + float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_LR_LAT_PRODUCT"]) +
                            float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_UR_LAT_PRODUCT"]) + float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_UL_LAT_PRODUCT"])) / 4
-        self.lon_center = (float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_LL_LON_PRODUCT"]) + float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_LR_LON_PRODUCT"]) +
-                           float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_UR_LON_PRODUCT"]) + float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_UL_LON_PRODUCT"])) / 4
+        # ordinary averaging generally works for latitude because latitude does not wrap around
+        # Fix the longitude-center calculation for images crossing the 180° meridian e.g., -175 to 175 will make it as zero.
+        # The center longitude is used to adjust images to the true-north direction
+        # when matching clouds with their shadows. Applied in version 5.0.2 and later.
+        lon_rad_corners = np.deg2rad([
+            float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_LL_LON_PRODUCT"]),
+            float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_LR_LON_PRODUCT"]),
+            float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_UR_LON_PRODUCT"]),
+            float(self.metadata["PROJECTION_ATTRIBUTES"]["CORNER_UL_LON_PRODUCT"]),
+        ])
+        # averages the directions represented by the longitudes, rather than directly averaging their numerical values.
+        # and finally arctan2 converts the averaged direction back into a longitude
+        self.lon_center = np.rad2deg(
+            np.arctan2(np.mean(np.sin(lon_rad_corners)), np.mean(np.cos(lon_rad_corners)))
+        )
         # build a dataframe for band id and band filename
         self.bands = self.get_spacecraft_bands(
             self.spacecraft
@@ -892,7 +906,16 @@ class Sentinel2(Satellite):
         self.lat_north = np.max(lats_four)
         self.lat_south = np.min(lats_four)
         self.lat_center = np.mean(lats_four)
-        self.lon_center = np.mean(lons_four)
+        # ordinary averaging generally works for latitude because latitude does not wrap around
+        # Fix the longitude-center calculation for images crossing the 180° meridian e.g., -175 to 175 will make it as zero.
+        # The center longitude is used to adjust images to the true-north direction
+        # when matching clouds with their shadows. Applied in version 5.0.2 and later.
+        lon_rad_corners = np.deg2rad(lons_four)
+        # averages the directions represented by the longitudes, rather than directly averaging their numerical values.
+        # and finally arctan2 converts the averaged direction back into a longitude
+        self.lon_center = np.rad2deg(
+            np.arctan2(np.mean(np.sin(lon_rad_corners)), np.mean(np.cos(lon_rad_corners)))
+        )
     def read_band(
         self, band, level="TOA", maskupdate=True, profile=False
     ):  # sza=None is added for the compatibility with the Landsat
